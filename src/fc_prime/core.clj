@@ -29,7 +29,7 @@
     (prime-sieve num-primes range-max filter-multiples))
 
 (defn find-primes 
-  "Finds desired number primes between 2 and a given max"
+  "Finds desired number primes between 2 and a given max. Defaults to return 10 primes less than 1000"
   ([] (find-primes 1000))
-  ([range-max] (find-primes range-max nil))
+  ([range-max] (find-primes range-max 10))
   ([range-max num-primes] (prime-switch num-primes range-max)))
