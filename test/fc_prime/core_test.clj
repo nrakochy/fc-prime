@@ -31,9 +31,16 @@
       (is (= true (terminate-prime-finder? requested-num two-primes (range 2))))))
   (testing "returns true if reduced collection is empty" 
     (let [requested-num 1000
-          empty-seq (sequence '())]
-      (is (= true (terminate-prime-finder? requested-num first-ten-primes empty-seq)))))
+          starting-seq (sequence '())]
+      (is (= true (terminate-prime-finder? requested-num first-ten-primes starting-seq)))))
   (testing "returns false if requested num of primes has not been reached and there are still numbers in the
            reduced collection param"
-    (let [requested-num 1000]
-            (is (= false (terminate-prime-finder? requested-num [] first-ten-primes))))))
+    (let [requested-num 1000
+          accumulator [2]]
+      (is (= false (terminate-prime-finder? requested-num accumulator first-ten-primes))))))
+
+(deftest prime-sieve-test 
+  (testing "returns coll of primes" 
+    (let [range-max 1000
+          func filter-multiples]
+        (is (= first-ten-primes (prime-sieve 10 range-max func))))))
